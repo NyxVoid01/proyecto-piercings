@@ -25,7 +25,7 @@ html {
 body {
     background-color: var(--fondo-blanco);
     color: var(--negro-minimal);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Montserrat', sans-serif; /* Nueva fuente aplicada */
     line-height: 1.6;
 }
 
@@ -233,4 +233,137 @@ footer {
 ::selection {
     background-color: var(--verde-suave); /* O var(--dorado-logo) si prefieres */
     color: white;
+}
+
+/* =========================================
+   8. SECCIÓN VISÍTANOS (UBICACIÓN Y HORARIOS)
+   ========================================= */
+#visitanos {
+    padding: 80px 20px;
+    background-color: var(--fondo-blanco);
+}
+
+.contenedor-visita {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1000px;
+    margin: 0 auto;
+    gap: 40px;
+    align-items: center;
+}
+
+.columna-info, .columna-horarios {
+    flex: 1;
+    min-width: 300px;
+}
+
+/* Estilo Columna Izquierda */
+.columna-info h2 {
+    color: var(--verde-suave);
+    margin-bottom: 20px;
+    font-size: 2rem;
+}
+
+.detalle-contacto {
+    margin: 20px 0;
+    border-left: 3px solid var(--dorado-logo);
+    padding-left: 15px;
+}
+
+.btn-secundario {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 2px solid var(--negro-minimal);
+    color: var(--negro-minimal);
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.btn-secundario:hover {
+    background-color: var(--negro-minimal);
+    color: white;
+}
+
+/* Estilo Columna Derecha (Horarios) */
+.columna-horarios {
+    background-color: var(--verde-claro);
+    padding: 40px;
+    border-radius: 20px;
+}
+
+.columna-horarios h3 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: var(--negro-minimal);
+}
+
+.lista-horarios {
+    list-style: none;
+    padding: 0;
+}
+
+.lista-horarios li {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--gris-borde);
+    font-size: 0.95rem;
+}
+
+.lista-horarios li:last-child {
+    border-bottom: none;
+}
+
+.lista-horarios li strong {
+    color: var(--verde-suave);
+}
+
+.lista-horarios li.cerrado strong {
+    color: var(--gris-texto);
+    font-style: italic;
+}
+
+/* =========================================
+   9. DISEÑO RESPONSIVO (Media Queries)
+   ========================================= */
+
+/* Para tablets y celulares (pantallas menores a 768px) */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.4rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    #inicio {
+        padding: 60px 20px;
+    }
+
+    #inicio h2 {
+        font-size: 1.8rem;
+    }
+
+    /* Las columnas de horarios y servicios se apilan verticalmente */
+    .contenedor-visita, 
+    .contenedor-servicios {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .servicio-card, 
+    .columna-info, 
+    .columna-horarios {
+        width: 100%;
+        max-width: none;
+    }
+
+    form {
+        width: 90%;
+        padding: 20px;
+    }
 }
