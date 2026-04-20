@@ -228,3 +228,9 @@ footer {
     background-color: #128c7e; /* Un verde más oscuro al pasar el mouse */
     transform: scale(1.1);
 }
+
+/* Color cuando el usuario selecciona texto con el mouse */
+::selection {
+    background-color: var(--verde-suave); /* O var(--dorado-logo) si prefieres */
+    color: white;
+}
