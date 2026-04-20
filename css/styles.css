@@ -1,0 +1,218 @@
+
+/* 1. Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 2. Estilo General */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212; /* Fondo casi negro */
+    color: #f4f4f4; /* Texto blanco/grisáceo */
+    line-height: 1.6;
+}
+
+/* 3. Encabezado */
+header {
+    background-color: #1a1a1a;
+    padding: 20px 0;
+    text-align: center;
+    border-bottom: 2px solid #d4af37; /* Línea dorada */
+}
+
+header h1 {
+    color: #d4af37; /* Letras doradas */
+    margin-bottom: 10px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+nav a {
+    color: #f4f4f4;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #d4af37;
+}
+
+/* 4. Contenido Principal e Imagen de Fondo */
+#inicio {
+    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('../image_def523.png');
+    background-size: cover;
+    background-position: center;
+    padding: 100px 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+#inicio h2 {
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 4px #000;
+}
+
+#inicio p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    text-shadow: 1px 1px 2px #000;
+}
+
+/* 5. Pie de página (Actualizado) */
+footer {
+    background-color: #0a0a0a;
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 50px;
+    border-top: 2px solid #d4af37;
+}
+
+.footer-contenido {
+    margin-bottom: 20px;
+}
+
+.footer-contenido p {
+    color: #aaa;
+    margin-bottom: 5px;
+}
+
+.redes-sociales {
+    margin-top: 15px;
+}
+
+.redes-sociales a {
+    color: #d4af37;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+.redes-sociales a:hover {
+    color: #fff;
+}
+
+.copyright {
+    font-size: 0.9rem;
+    color: #555;
+    margin-top: 20px;
+}
+
+/* 6. Formulario de Agendamiento */
+#contacto {
+    margin-top: 30px;
+}
+
+form {
+    background-color: #1a1a1a;
+    padding: 30px;
+    border-radius: 8px;
+    max-width: 500px;
+    margin: 20px auto;
+    border: 1px solid #333;
+    text-align: left;
+}
+
+form label {
+    color: #d4af37;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+form input, form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color: #222;
+    border: 1px solid #444;
+    color: #f4f4f4;
+    border-radius: 4px;
+}
+
+form button {
+    width: 100%;
+    background-color: #d4af37;
+    color: #121212;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #fff;
+}
+
+/* 7. Sección de Servicios (Tarjetas) */
+#servicios {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.contenedor-servicios {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.servicio-card {
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 20px;
+    width: 250px;
+    text-align: center;
+    transition: transform 0.3s ease; /* Efecto de movimiento suave */
+}
+
+.servicio-card:hover {
+    transform: translateY(-10px); /* Hace que la tarjeta "salte" al pasar el mouse */
+    border-color: #d4af37;
+}
+
+.servicio-card h3 {
+    color: #f4f4f4;
+    margin-bottom: 10px;
+}
+
+.servicio-card p {
+    font-size: 14px;
+    color: #aaa;
+    margin-bottom: 15px;
+}
+
+.servicio-card .precio {
+    display: block;
+    color: #d4af37;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.logo-img {
+    width: 120px; /* Tamaño ideal para tu logo circular */
+    height: auto;
+    border-radius: 50%; /* Mantener la forma circular */
+    margin-bottom: 15px;
+    border: 2px solid #d4af37; /* Borde dorado que combina con el estilo */
+}
+
+.header-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+}
