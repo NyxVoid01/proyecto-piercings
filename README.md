@@ -15,8 +15,8 @@ El negocio requiere una vitrina digital para mostrar su catálogo de servicios, 
 
 ## Integrantes y Roles
 * **Fernando Portilla**: Desarrollador Frontend y Gestión de Repositorio.
-* **[Nombre de compañero]**: [Rol]
-* **[Nombre de compañero]**: [Rol]
+* **Angel Sanchez**: ??
+
 
 ## URL del Sitio
-[PEGA AQUÍ TU LINK DE GITHUB PAGES]
+http://127.0.0.1:5501/index.html

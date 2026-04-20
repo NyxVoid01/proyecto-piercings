@@ -25,7 +25,8 @@ html {
 body {
     background-color: var(--fondo-blanco);
     color: var(--negro-minimal);
-    font-family: 'Montserrat', sans-serif; /* Nueva fuente aplicada */
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px; 
     line-height: 1.6;
 }
 
