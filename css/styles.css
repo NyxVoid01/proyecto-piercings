@@ -151,27 +151,27 @@ nav a:hover {
 }
 
 /* EFECTO HOVER IMAGEN DE REFERENCIA */
-/* EFECTO HOVER IMAGEN DE REFERENCIA (Actualizado) */
+
 .img-referencia {
     position: absolute;
-    top: 15px; /* Bajamos la imagen para que quede justo sobre el título */
+    top: -100px; /* LA SUBIMOS BASTANTE: Ahora flota muy por encima del borde superior de la tarjeta */
     left: 50%;
     transform: translateX(-50%) scale(0.5); 
-    width: 170px; /* Imagen más grande (antes era 120px) */
-    height: 170px;
+    width: 130px; /* Un tamaño intermedio para que se vea bien pero no sea gigante */
+    height: 130px;
     object-fit: cover; 
     border-radius: 50%; 
-    border: 4px solid var(--dorado-logo); /* Borde un poco más grueso */
-    box-shadow: 0 15px 25px rgba(0,0,0,0.9); /* Sombra más fuerte para dar profundidad */
+    border: 3px solid var(--dorado-logo); 
+    box-shadow: 0 10px 25px rgba(0,0,0,0.8); /* Sombra más fuerte para que se note que flota */
     opacity: 0; 
     visibility: hidden;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
     z-index: 10;
-    background-color: var(--fondo-oscuro); /* Evita que las letras se transparenten debajo */
+    background-color: var(--fondo-oscuro); 
 }
 
 .servicio-card:hover .img-referencia {
-    transform: translateX(-50%) scale(1); /* Al pasar el mouse, crece a su tamaño real de 170px */
+    transform: translateX(-50%) scale(1); 
     opacity: 1; 
     visibility: visible;
 }
