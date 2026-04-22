@@ -2,7 +2,7 @@
 # BODYARTS AS COUPLE
 
 ## Descripción del Negocio
-Estudio profesional de perforaciones corporales ubicado en Copiapó, especializado en técnicas asépticas y joyería de alta gama (máximo 5 líneas).
+Estudio profesional de perforaciones corporales ubicado en Copiapó, especializado en técnicas asépticas y joyería de alta gama . (max 5 lineas)
 
 ## Necesidad Digital
 El negocio requiere una vitrina digital para mostrar su catálogo de servicios, estándares de higiene y facilitar el agendamiento de citas, centralizando la información para clientes locales.
@@ -19,4 +19,4 @@ El negocio requiere una vitrina digital para mostrar su catálogo de servicios, 
 
 
 ## URL del Sitio
-http://127.0.0.1:5501/index.html
+https://nyxvoid01.github.io/proyecto-piercings/

@@ -1,19 +1,16 @@
 
-html {
-    scroll-behavior: smooth;
-}
-
 /* =========================================
-   1. VARIABLES Y RESET (Paleta Natural & Premium)
+   1. VARIABLES Y RESET (Unificado)
    ========================================= */
 :root {
-    --fondo-blanco: #ffffff;
-    --verde-suave: #4a7c59;      /* Un verde bosque apagado, muy elegante */
-    --verde-claro: #f1f8f4;      /* Fondo muy tenue para resaltar secciones */
-    --dorado-logo: #d4af37;      /* El dorado de tu logo */
-    --negro-minimal: #1a1a1a;    /* Para los toques de fuerza */
-    --gris-borde: #e0e0e0;       /* Bordes finos */
-    --texto-suave: #555555;
+    --fondo-oscuro: #0a0f0d;      /* Verde casi negro */
+    --fondo-card: #121a17;        /* Verde oscuro para bloques */
+    --verde-suave: #4a7c59;       /* Verde bosque principal */
+    --dorado-logo: #b8965a;       /* Dorado para detalles */
+    --blanco-texto: #e8e8e8;      /* Blanco suave para lectura */
+    --gris-borde: #222a27;        /* Bordes sutiles */
+    --texto-suave: #a0a0a0;       /* Gris para párrafos */
+    --negro-minimal: #050505;     /* Negro profundo para botones */
 }
 
 * {
@@ -22,22 +19,32 @@ html {
     box-sizing: border-box;
 }
 
+/* Mejora extra: Asegura que las imágenes nunca rompan el diseño en móviles */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    background-color: var(--fondo-blanco);
-    color: var(--negro-minimal);
+    background-color: var(--fondo-oscuro);
+    color: var(--blanco-texto);
     font-family: 'Montserrat', sans-serif;
     font-size: 16px; 
     line-height: 1.6;
 }
 
 /* =========================================
-   2. ENCABEZADO (Blanco con detalle Verde)
+   2. ENCABEZADO
    ========================================= */
 header {
-    background-color: var(--fondo-blanco);
+    background-color: var(--fondo-oscuro);
     padding: 25px 0;
     text-align: center;
-    border-bottom: 4px solid var(--verde-suave); /* Cambiamos el dorado por verde aquí */
+    border-bottom: 4px solid var(--verde-suave); 
 }
 
 .logo-img {
@@ -49,7 +56,7 @@ header {
 }
 
 header h1 {
-    color: var(--negro-minimal);
+    color: var(--blanco-texto);
     font-size: 1.6rem;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -72,14 +79,14 @@ nav a {
 }
 
 nav a:hover {
-    color: var(--verde-suave); /* Hover en verde */
+    color: var(--verde-suave);
 }
 
 /* =========================================
    3. SECCIÓN HERO (Inicio)
    ========================================= */
 #inicio {
-    background-image: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)), url('../image_def523.png');
+    background-image: linear-gradient(rgba(10,15,13,0.8), rgba(10,15,13,0.9)), url('../image_def523.png');
     background-size: cover;
     padding: 100px 20px;
     text-align: center;
@@ -87,16 +94,23 @@ nav a:hover {
 
 #inicio h2 {
     font-size: 2.5rem;
-    color: var(--verde-suave); /* Título en verde suave */
-    margin-bottom: 10px;
+    color: var(--verde-suave);
+    margin-bottom: 15px;
 }
 
 /* =========================================
-   4. SERVICIOS (Cards con toque Verde y Dorado)
+   4. SERVICIOS
    ========================================= */
 #servicios {
-    background-color: var(--verde-claro); /* Fondo tenue verde */
+    background-color: var(--fondo-oscuro); 
     padding: 60px 20px;
+}
+
+#servicios h2, #servicios h3 {
+    color: var(--verde-suave);
+    text-align: center;
+    margin-bottom: 20px;
+    text-transform: uppercase;
 }
 
 .contenedor-servicios {
@@ -104,10 +118,11 @@ nav a:hover {
     justify-content: center;
     gap: 25px;
     flex-wrap: wrap;
+    margin-bottom: 50px;
 }
 
 .servicio-card {
-    background-color: var(--fondo-blanco);
+    background-color: var(--fondo-card);
     border: 1px solid var(--gris-borde);
     border-radius: 15px;
     padding: 30px;
@@ -118,18 +133,17 @@ nav a:hover {
 
 .servicio-card:hover {
     transform: translateY(-8px);
-    border-color: var(--dorado-logo); /* Al pasar el mouse resalta el dorado */
-    box-shadow: 0 10px 20px rgba(74, 124, 89, 0.1);
+    border-color: var(--dorado-logo);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
 }
 
 .servicio-card h3 {
-    color: var(--negro-minimal);
+    color: var(--blanco-texto);
     margin-bottom: 10px;
-    font-size: 1.3rem;
 }
 
 .servicio-card .precio {
-    color: var(--verde-suave); /* Precio en verde */
+    color: var(--dorado-logo);
     font-weight: bold;
     font-size: 1.4rem;
     display: block;
@@ -137,111 +151,11 @@ nav a:hover {
 }
 
 /* =========================================
-   5. FORMULARIO (El toque de Negro)
-   ========================================= */
-form {
-    background-color: var(--fondo-blanco);
-    padding: 40px;
-    max-width: 500px;
-    margin: 50px auto;
-    border-radius: 20px;
-    border: 1px solid var(--gris-borde);
-}
-
-form label {
-    color: var(--verde-suave);
-    font-weight: bold;
-    font-size: 0.8rem;
-    margin-bottom: 5px;
-    display: block;
-}
-
-form input, form select {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 20px;
-    border: 1px solid var(--gris-borde);
-    border-radius: 8px;
-    background-color: #fafafa;
-}
-
-form button {
-    width: 100%;
-    background-color: var(--negro-minimal); /* Toque de NEGRO potente aquí */
-    color: white;
-    padding: 15px;
-    border: none;
-    border-radius: 8px;
-    font-weight: bold;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-form button:hover {
-    background-color: var(--verde-suave); /* Cambia a verde al pasar el mouse */
-}
-
-/* =========================================
-   6. FOOTER
-   ========================================= */
-footer {
-    background-color: #f4f4f4;
-    color: var(--texto-suave);
-    padding: 40px 20px;
-    text-align: center;
-    border-top: 1px solid var(--gris-borde);
-}
-
-.redes-sociales a {
-    color: var(--negro-minimal);
-    margin: 0 10px;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.redes-sociales a:hover {
-    color: var(--dorado-logo);
-}
-
-/* =========================================
-   7. BOTÓN FLOTANTE WHATSAPP
-   ========================================= */
-.btn-whatsapp {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #25d366; /* El verde oficial de WhatsApp */
-    color: white;
-    padding: 12px 20px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 14px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-}
-
-.btn-whatsapp:hover {
-    background-color: #128c7e; /* Un verde más oscuro al pasar el mouse */
-    transform: scale(1.1);
-}
-
-/* Color cuando el usuario selecciona texto con el mouse */
-::selection {
-    background-color: var(--verde-suave); /* O var(--dorado-logo) si prefieres */
-    color: white;
-}
-
-/* =========================================
-   8. SECCIÓN VISÍTANOS (UBICACIÓN Y HORARIOS)
+   5. VISÍTANOS 
    ========================================= */
 #visitanos {
     padding: 80px 20px;
-    background-color: var(--fondo-blanco);
+    background-color: var(--fondo-oscuro);
 }
 
 .contenedor-visita {
@@ -250,32 +164,29 @@ footer {
     max-width: 1000px;
     margin: 0 auto;
     gap: 40px;
-    align-items: center;
+    align-items: flex-start;
+    padding: 0 15px;
 }
 
-.columna-info, .columna-horarios {
-    flex: 1;
-    min-width: 300px;
-}
-
-/* Estilo Columna Izquierda */
 .columna-info h2 {
     color: var(--verde-suave);
     margin-bottom: 20px;
     font-size: 2rem;
+    text-align: left;
 }
 
 .detalle-contacto {
     margin: 20px 0;
     border-left: 3px solid var(--dorado-logo);
     padding-left: 15px;
+    text-align: left;
 }
 
 .btn-secundario {
     display: inline-block;
     padding: 10px 20px;
-    border: 2px solid var(--negro-minimal);
-    color: var(--negro-minimal);
+    border: 2px solid var(--verde-suave);
+    color: white !important;
     text-decoration: none;
     font-weight: bold;
     border-radius: 5px;
@@ -283,26 +194,25 @@ footer {
 }
 
 .btn-secundario:hover {
-    background-color: var(--negro-minimal);
-    color: white;
+    background-color: var(--verde-suave);
 }
 
-/* Estilo Columna Derecha (Horarios) */
 .columna-horarios {
-    background-color: var(--verde-claro);
+    background-color: var(--fondo-card);
     padding: 40px;
     border-radius: 20px;
+    border: 1px solid var(--gris-borde);
+    flex: 1;
 }
 
 .columna-horarios h3 {
+    color: var(--blanco-texto);
     text-align: center;
-    margin-bottom: 25px;
-    color: var(--negro-minimal);
+    margin-bottom: 20px;
 }
 
 .lista-horarios {
     list-style: none;
-    padding: 0;
 }
 
 .lista-horarios li {
@@ -310,61 +220,128 @@ footer {
     justify-content: space-between;
     padding: 12px 0;
     border-bottom: 1px solid var(--gris-borde);
-    font-size: 0.95rem;
-}
-
-.lista-horarios li:last-child {
-    border-bottom: none;
+    color: var(--texto-suave);
 }
 
 .lista-horarios li strong {
-    color: var(--verde-suave);
-}
-
-.lista-horarios li.cerrado strong {
-    color: var(--gris-texto);
-    font-style: italic;
+    color: var(--blanco-texto);
 }
 
 /* =========================================
-   9. DISEÑO RESPONSIVO (Media Queries)
+   6. CONTACTO 
    ========================================= */
+#contacto {
+    padding: 80px 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
 
-/* Para tablets y celulares (pantallas menores a 768px) */
+#contacto h1, #contacto h2 {
+    color: var(--verde-suave);
+    font-size: 2rem;
+    margin-bottom: 30px;
+    text-align: left;
+    padding-left: 15px;
+}
+
+form {
+    background-color: var(--fondo-card);
+    padding: 40px;
+    max-width: 600px;
+    margin-left: 15px;
+    border-radius: 20px;
+    border: 1px solid var(--gris-borde);
+}
+
+form label {
+    color: var(--verde-suave);
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+form input, form select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    background-color: var(--fondo-oscuro);
+    color: white;
+    border: 1px solid var(--gris-borde);
+    border-radius: 8px;
+}
+
+form button {
+    width: 100%;
+    background-color: var(--negro-minimal);
+    color: white;
+    padding: 15px;
+    border: 1px solid var(--verde-suave);
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+form button:hover {
+    background-color: var(--verde-suave);
+}
+
+/* =========================================
+   7. FOOTER Y BOTONES FLOTANTES
+   ========================================= */
+footer {
+    background-color: var(--negro-minimal);
+    color: var(--texto-suave);
+    padding: 40px 20px;
+    text-align: center;
+    border-top: 1px solid var(--gris-borde);
+}
+
+.redes-sociales a {
+    color: var(--blanco-texto);
+    margin: 0 10px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.redes-sociales a:hover {
+    color: var(--dorado-logo);
+}
+
+.btn-whatsapp {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25d366;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    z-index: 1000;
+    transition: 0.3s;
+}
+
+.btn-whatsapp:hover {
+    transform: scale(1.05);
+}
+
+/* =========================================
+   8. DISEÑO RESPONSIVO (Media Queries)
+   ========================================= */
 @media (max-width: 768px) {
-    header h1 {
-        font-size: 1.4rem;
-    }
-
-    nav ul {
+    .contenedor-visita {
         flex-direction: column;
-        gap: 10px;
     }
-
-    #inicio {
-        padding: 60px 20px;
-    }
-
-    #inicio h2 {
-        font-size: 1.8rem;
-    }
-
-    /* Las columnas de horarios y servicios se apilan verticalmente */
-    .contenedor-visita, 
-    .contenedor-servicios {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .servicio-card, 
-    .columna-info, 
-    .columna-horarios {
-        width: 100%;
-        max-width: none;
-    }
-
+    
     form {
-        width: 90%;
-        padding: 20px;
+        margin-left: 0;
+        width: 100%;
+    }
+    
+    #contacto h1, #contacto h2 {
+        padding-left: 0;
+        text-align: center;
     }
 }
