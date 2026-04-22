@@ -40,10 +40,18 @@ body {
    2. ENCABEZADO
    ========================================= */
 header {
-    background-color: var(--fondo-oscuro);
+    /* 1. Tu diseño original intacto (No se elimina nada) */
     padding: 25px 0;
-    text-align: center;
+    text-align: center; /* Esto mantiene el logo y el texto al medio */
     border-bottom: 4px solid var(--verde-suave); 
+    
+    /* 2. La nueva magia (Sticky + Vidrio esmerilado) */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: rgba(10, 15, 13, 0.85); /* Es tu mismo fondo oscuro, pero 15% transparente */
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px);
 }
 
 .logo-img {
@@ -81,6 +89,24 @@ nav a:hover {
     color: var(--verde-suave);
 }
 
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--fondo-oscuro);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--verde-suave);
+    border-radius: 10px;
+    border: 3px solid var(--fondo-oscuro);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--dorado-logo);
+}
+
 /* =========================================
    3. SECCIÓN HERO (Inicio e Historia)
    ========================================= */
@@ -95,6 +121,15 @@ nav a:hover {
     font-size: 2.5rem;
     color: var(--verde-suave);
     margin-bottom: 15px;
+}
+
+form input:focus, 
+form select:focus {
+    outline: none; /* Quita el borde azul por defecto del navegador */
+    border-color: var(--dorado-logo);
+    box-shadow: 0 0 10px rgba(184, 150, 90, 0.3); /* Resplandor dorado */
+    background-color: #1a241f; /* Se aclara un poquito el fondo al escribir */
+    transition: all 0.3s ease;
 }
 
 /* =========================================
