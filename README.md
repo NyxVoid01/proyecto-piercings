@@ -9,13 +9,14 @@ El negocio requiere una vitrina digital para mostrar su catálogo de servicios, 
 
 ## Secciones del Sitio
 1. Inicio (Hero)
-2. Servicios
-3. Visítanos (Horarios y Ubicación)
-4. Contacto (Formulario)
+2. Historia
+3. Servicios
+4. Visítanos (Horarios y Ubicación)
+5. Contacto (Formulario)
 
 ## Integrantes y Roles
 * **Fernando Portilla**: Desarrollador Frontend y Gestión de Repositorio.
-* **Angel Sanchez**: ??
+* **Angel Sanchez**: Desarrollador Frontend y Gestión de Repositorio.
 
 
 ## URL del Sitio
