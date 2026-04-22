@@ -1,8 +1,7 @@
-
 /* =========================================
    1. VARIABLES Y RESET (Modo Oscuro)
    ========================================= */
-:root {
+:root { /* Colores */
     --fondo-oscuro: #0a0f0d;      
     --fondo-card: #121a17;        
     --verde-suave: #4a7c59;       
@@ -13,22 +12,22 @@
     --negro-minimal: #050505;     
 }
 
-* {
+* { /* Reseteo */
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-img {
+img { /* Adaptabilidad */
     max-width: 100%;
     height: auto;
 }
 
-html {
+html { /* Desplazamiento */
     scroll-behavior: smooth;
 }
 
-body {
+body { /* Base */
     background-color: var(--fondo-oscuro);
     color: var(--blanco-texto);
     font-family: 'Montserrat', sans-serif;
@@ -39,22 +38,19 @@ body {
 /* =========================================
    2. ENCABEZADO
    ========================================= */
-header {
-    /* 1. Tu diseño original intacto (No se elimina nada) */
+header { /* Menú */
     padding: 25px 0;
-    text-align: center; /* Esto mantiene el logo y el texto al medio */
+    text-align: center; 
     border-bottom: 4px solid var(--verde-suave); 
-    
-    /* 2. La nueva magia (Sticky + Vidrio esmerilado) */
-    position: sticky;
+    position: sticky; /* Fijo */
     top: 0;
     z-index: 1000;
-    background-color: rgba(10, 15, 13, 0.85); /* Es tu mismo fondo oscuro, pero 15% transparente */
-    backdrop-filter: blur(10px); 
+    background-color: rgba(10, 15, 13, 0.85); 
+    backdrop-filter: blur(10px); /* Esmerilado */
     -webkit-backdrop-filter: blur(10px);
 }
 
-.logo-img {
+.logo-img { /* Imagen */
     width: 130px;
     border-radius: 50%;
     border: 2px solid var(--dorado-logo);
@@ -62,14 +58,14 @@ header {
     margin-bottom: 10px;
 }
 
-header h1 {
+header h1 { /* Marca */
     color: var(--blanco-texto);
     font-size: 1.6rem;
     text-transform: uppercase;
     letter-spacing: 2px;
 }
 
-nav ul {
+nav ul { /* Lista */
     list-style: none;
     display: flex;
     justify-content: center;
@@ -77,7 +73,7 @@ nav ul {
     margin-top: 15px;
 }
 
-nav a {
+nav a { /* Enlaces */
     color: var(--texto-suave);
     text-decoration: none;
     font-weight: bold;
@@ -85,71 +81,69 @@ nav a {
     transition: 0.3s;
 }
 
-nav a:hover {
+nav a:hover { /* Interacción */
     color: var(--verde-suave);
 }
 
-::-webkit-scrollbar {
+::-webkit-scrollbar { /* Barra */
     width: 12px;
 }
 
-::-webkit-scrollbar-track {
+::-webkit-scrollbar-track { /* Fondo-barra */
     background-color: var(--fondo-oscuro);
 }
 
-::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb { /* Deslizador */
     background-color: var(--verde-suave);
     border-radius: 10px;
     border: 3px solid var(--fondo-oscuro);
 }
 
-::-webkit-scrollbar-thumb:hover {
+::-webkit-scrollbar-thumb:hover { /* Activado */
     background-color: var(--dorado-logo);
 }
-
 
 /* =========================================
    3. SECCIÓN HERO (Inicio e Historia)
    ========================================= */
-#inicio, #historia {
+#inicio, #historia { /* Portada */
     background-image: linear-gradient(rgba(10,15,13,0.8), rgba(10,15,13,0.9)), url('../image_def523.png');
     background-size: cover;
     padding: 100px 20px;
     text-align: center;
 }
 
-#inicio h2, #historia h2 {
+#inicio h2, #historia h2 { /* Títulos */
     font-size: 2.5rem;
     color: var(--verde-suave);
     margin-bottom: 15px;
 }
 
 form input:focus, 
-form select:focus {
-    outline: none; /* Quita el borde azul por defecto del navegador */
+form select:focus { /* Resplandor */
+    outline: none; 
     border-color: var(--dorado-logo);
-    box-shadow: 0 0 10px rgba(184, 150, 90, 0.3); /* Resplandor dorado */
-    background-color: #1a241f; /* Se aclara un poquito el fondo al escribir */
+    box-shadow: 0 0 10px rgba(184, 150, 90, 0.3); 
+    background-color: #1a241f; 
     transition: all 0.3s ease;
 }
-
 
 /* =========================================
    4. SERVICIOS (Con efecto Hover de Imágenes)
    ========================================= */
-#servicios {
+#servicios { /* Contenedor */
     background-color: var(--fondo-oscuro); 
     padding: 60px 20px;
 }
 
-#servicios h2, #servicios h3 {
+#servicios h2, #servicios h3 { /* Subtítulos */
     color: var(--verde-suave);
     text-align: center;
     margin-bottom: 20px;
     text-transform: uppercase;
 }
 
-.contenedor-servicios {
+.contenedor-servicios { /* Cuadrícula */
     display: flex;
     justify-content: center;
     gap: 25px;
@@ -157,7 +151,7 @@ form select:focus {
     margin-bottom: 50px;
 }
 
-.servicio-card {
+.servicio-card { /* Tarjeta */
     background-color: var(--fondo-card);
     border: 1px solid var(--gris-borde);
     border-radius: 15px;
@@ -165,21 +159,21 @@ form select:focus {
     width: 280px;
     text-align: center;
     transition: 0.3s ease;
-    position: relative; /* CRÍTICO PARA LA IMAGEN FLOTANTE */
+    position: relative; /* Base-flotante */
 }
 
-.servicio-card:hover {
+.servicio-card:hover { /* Elevación */
     transform: translateY(-8px);
     border-color: var(--dorado-logo);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
 }
 
-.servicio-card h3 {
+.servicio-card h3 { /* Nombre */
     color: var(--blanco-texto);
     margin-bottom: 10px;
 }
 
-.servicio-card .precio {
+.servicio-card .precio { /* Valor */
     color: var(--dorado-logo);
     font-weight: bold;
     font-size: 1.4rem;
@@ -187,27 +181,25 @@ form select:focus {
     margin-top: 15px;
 }
 
-/* EFECTO HOVER IMAGEN DE REFERENCIA */
-
-.img-referencia {
+.img-referencia { /* Oculta */
     position: absolute;
-    top: -100px; /* LA SUBIMOS BASTANTE: Ahora flota muy por encima del borde superior de la tarjeta */
+    top: -100px; /* Subida */
     left: 50%;
     transform: translateX(-50%) scale(0.5); 
-    width: 130px; /* Un tamaño intermedio para que se vea bien pero no sea gigante */
+    width: 130px; /* Tamaño */
     height: 130px;
     object-fit: cover; 
     border-radius: 50%; 
     border: 3px solid var(--dorado-logo); 
-    box-shadow: 0 10px 25px rgba(0,0,0,0.8); /* Sombra más fuerte para que se note que flota */
-    opacity: 0; 
+    box-shadow: 0 10px 25px rgba(0,0,0,0.8); /* Sombra */
+    opacity: 0; /* Transparente */
     visibility: hidden;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
     z-index: 10;
     background-color: var(--fondo-oscuro); 
 }
 
-.servicio-card:hover .img-referencia {
+.servicio-card:hover .img-referencia { /* Visible */
     transform: translateX(-50%) scale(1); 
     opacity: 1; 
     visibility: visible;
@@ -216,12 +208,12 @@ form select:focus {
 /* =========================================
    5. VISÍTANOS 
    ========================================= */
-#visitanos {
+#visitanos { /* Sección */
     padding: 80px 20px;
     background-color: var(--fondo-oscuro);
 }
 
-.contenedor-visita {
+.contenedor-visita { /* Maquetación */
     display: flex;
     flex-wrap: wrap;
     max-width: 1000px;
@@ -231,21 +223,21 @@ form select:focus {
     padding: 0 15px;
 }
 
-.columna-info h2 {
+.columna-info h2 { /* Título */
     color: var(--verde-suave);
     margin-bottom: 20px;
     font-size: 2rem;
     text-align: left;
 }
 
-.detalle-contacto {
+.detalle-contacto { /* Detalles */
     margin: 20px 0;
     border-left: 3px solid var(--dorado-logo);
     padding-left: 15px;
     text-align: left;
 }
 
-.btn-secundario {
+.btn-secundario { /* Botón */
     display: inline-block;
     padding: 10px 20px;
     border: 2px solid var(--verde-suave);
@@ -256,11 +248,11 @@ form select:focus {
     transition: 0.3s;
 }
 
-.btn-secundario:hover {
+.btn-secundario:hover { /* Acción */
     background-color: var(--verde-suave);
 }
 
-.columna-horarios {
+.columna-horarios { /* Caja */
     background-color: var(--fondo-card);
     padding: 40px;
     border-radius: 20px;
@@ -268,26 +260,26 @@ form select:focus {
     flex: 1;
 }
 
-.columna-horarios h3 {
+.columna-horarios h3 { /* Título */
     color: var(--blanco-texto);
     text-align: center;
     margin-bottom: 20px;
 }
 
-.lista-horarios { list-style: none; }
+.lista-horarios { list-style: none; /* Días */ }
 .lista-horarios li { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--gris-borde); color: var(--texto-suave); }
-.lista-horarios li strong { color: var(--blanco-texto); }
+.lista-horarios li strong { color: var(--blanco-texto); /* Cierre */ }
 
 /* =========================================
    6. CONTACTO 
    ========================================= */
-#contacto {
+#contacto { /* Bloque */
     padding: 80px 20px;
     max-width: 1000px;
     margin: 0 auto;
 }
 
-#contacto h2 {
+#contacto h2 { /* Título */
     color: var(--verde-suave);
     font-size: 2rem;
     margin-bottom: 30px;
@@ -295,7 +287,7 @@ form select:focus {
     padding-left: 15px;
 }
 
-form {
+form { /* Formulario */
     background-color: var(--fondo-card);
     padding: 40px;
     max-width: 600px;
@@ -304,15 +296,15 @@ form {
     border: 1px solid var(--gris-borde);
 }
 
-form label { color: var(--verde-suave); font-weight: bold; display: block; margin-bottom: 5px; }
-form input, form select { width: 100%; padding: 12px; margin-bottom: 20px; background-color: var(--fondo-oscuro); color: white; border: 1px solid var(--gris-borde); border-radius: 8px; }
-form button { width: 100%; background-color: var(--negro-minimal); color: white; padding: 15px; border: 1px solid var(--verde-suave); border-radius: 8px; cursor: pointer; font-weight: bold; text-transform: uppercase; transition: 0.3s; }
-form button:hover { background-color: var(--verde-suave); }
+form label { color: var(--verde-suave); font-weight: bold; display: block; margin-bottom: 5px; /* Etiquetas */ }
+form input, form select { width: 100%; padding: 12px; margin-bottom: 20px; background-color: var(--fondo-oscuro); color: white; border: 1px solid var(--gris-borde); border-radius: 8px; /* Cajas */ }
+form button { width: 100%; background-color: var(--negro-minimal); color: white; padding: 15px; border: 1px solid var(--verde-suave); border-radius: 8px; cursor: pointer; font-weight: bold; text-transform: uppercase; transition: 0.3s; /* Enviar */ }
+form button:hover { background-color: var(--verde-suave); /* Clic */ }
 
 /* =========================================
    7. FOOTER Y BOTONES FLOTANTES
    ========================================= */
-footer {
+footer { /* Pie */
     background-color: var(--negro-minimal);
     color: var(--texto-suave);
     padding: 40px 20px;
@@ -320,10 +312,10 @@ footer {
     border-top: 1px solid var(--gris-borde);
 }
 
-.redes-sociales a { color: var(--blanco-texto); margin: 0 10px; text-decoration: none; transition: 0.3s; }
-.redes-sociales a:hover { color: var(--dorado-logo); }
+.redes-sociales a { color: var(--blanco-texto); margin: 0 10px; text-decoration: none; transition: 0.3s; /* Íconos */ }
+.redes-sociales a:hover { color: var(--dorado-logo); /* Brillo */ }
 
-.btn-whatsapp {
+.btn-whatsapp { /* Chat */
     position: fixed;
     bottom: 20px;
     right: 20px;
@@ -337,13 +329,13 @@ footer {
     transition: 0.3s;
 }
 
-.btn-whatsapp:hover { transform: scale(1.05); }
+.btn-whatsapp:hover { transform: scale(1.05); /* Latido */ }
 
 /* =========================================
    8. DISEÑO RESPONSIVO (Media Queries)
    ========================================= */
-@media (max-width: 768px) {
-    .contenedor-visita { flex-direction: column; }
-    form { margin-left: 0; width: 100%; }
-    #contacto h2 { padding-left: 0; text-align: center; }
+@media (max-width: 768px) {    /* Quiebre */
+    .contenedor-visita { flex-direction: column; }  /* Columna */
+    form { margin-left: 0; width: 100%; } /* Ancho */
+    #contacto h2 { padding-left: 0; text-align: center; } /* Centro */
 }
