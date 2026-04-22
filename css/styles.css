@@ -151,25 +151,27 @@ nav a:hover {
 }
 
 /* EFECTO HOVER IMAGEN DE REFERENCIA */
+/* EFECTO HOVER IMAGEN DE REFERENCIA (Actualizado) */
 .img-referencia {
     position: absolute;
-    top: -80px; 
+    top: 15px; /* Bajamos la imagen para que quede justo sobre el título */
     left: 50%;
     transform: translateX(-50%) scale(0.5); 
-    width: 120px;
-    height: 120px;
+    width: 170px; /* Imagen más grande (antes era 120px) */
+    height: 170px;
     object-fit: cover; 
     border-radius: 50%; 
-    border: 3px solid var(--dorado-logo); 
-    box-shadow: 0 10px 20px rgba(0,0,0,0.6);
+    border: 4px solid var(--dorado-logo); /* Borde un poco más grueso */
+    box-shadow: 0 15px 25px rgba(0,0,0,0.9); /* Sombra más fuerte para dar profundidad */
     opacity: 0; 
     visibility: hidden;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
     z-index: 10;
+    background-color: var(--fondo-oscuro); /* Evita que las letras se transparenten debajo */
 }
 
 .servicio-card:hover .img-referencia {
-    transform: translateX(-50%) scale(1); 
+    transform: translateX(-50%) scale(1); /* Al pasar el mouse, crece a su tamaño real de 170px */
     opacity: 1; 
     visibility: visible;
 }
