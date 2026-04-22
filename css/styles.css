@@ -1,16 +1,16 @@
 
 /* =========================================
-   1. VARIABLES Y RESET (Unificado)
+   1. VARIABLES Y RESET (Modo Oscuro)
    ========================================= */
 :root {
-    --fondo-oscuro: #0a0f0d;      /* Verde casi negro */
-    --fondo-card: #121a17;        /* Verde oscuro para bloques */
-    --verde-suave: #4a7c59;       /* Verde bosque principal */
-    --dorado-logo: #b8965a;       /* Dorado para detalles */
-    --blanco-texto: #e8e8e8;      /* Blanco suave para lectura */
-    --gris-borde: #222a27;        /* Bordes sutiles */
-    --texto-suave: #a0a0a0;       /* Gris para párrafos */
-    --negro-minimal: #050505;     /* Negro profundo para botones */
+    --fondo-oscuro: #0a0f0d;      
+    --fondo-card: #121a17;        
+    --verde-suave: #4a7c59;       
+    --dorado-logo: #b8965a;       
+    --blanco-texto: #e8e8e8;      
+    --gris-borde: #222a27;        
+    --texto-suave: #a0a0a0;       
+    --negro-minimal: #050505;     
 }
 
 * {
@@ -19,7 +19,6 @@
     box-sizing: border-box;
 }
 
-/* Mejora extra: Asegura que las imágenes nunca rompan el diseño en móviles */
 img {
     max-width: 100%;
     height: auto;
@@ -83,23 +82,23 @@ nav a:hover {
 }
 
 /* =========================================
-   3. SECCIÓN HERO (Inicio)
+   3. SECCIÓN HERO (Inicio e Historia)
    ========================================= */
-#inicio {
+#inicio, #historia {
     background-image: linear-gradient(rgba(10,15,13,0.8), rgba(10,15,13,0.9)), url('../image_def523.png');
     background-size: cover;
     padding: 100px 20px;
     text-align: center;
 }
 
-#inicio h2 {
+#inicio h2, #historia h2 {
     font-size: 2.5rem;
     color: var(--verde-suave);
     margin-bottom: 15px;
 }
 
 /* =========================================
-   4. SERVICIOS
+   4. SERVICIOS (Con efecto Hover de Imágenes)
    ========================================= */
 #servicios {
     background-color: var(--fondo-oscuro); 
@@ -129,6 +128,7 @@ nav a:hover {
     width: 280px;
     text-align: center;
     transition: 0.3s ease;
+    position: relative; /* CRÍTICO PARA LA IMAGEN FLOTANTE */
 }
 
 .servicio-card:hover {
@@ -148,6 +148,30 @@ nav a:hover {
     font-size: 1.4rem;
     display: block;
     margin-top: 15px;
+}
+
+/* EFECTO HOVER IMAGEN DE REFERENCIA */
+.img-referencia {
+    position: absolute;
+    top: -80px; 
+    left: 50%;
+    transform: translateX(-50%) scale(0.5); 
+    width: 120px;
+    height: 120px;
+    object-fit: cover; 
+    border-radius: 50%; 
+    border: 3px solid var(--dorado-logo); 
+    box-shadow: 0 10px 20px rgba(0,0,0,0.6);
+    opacity: 0; 
+    visibility: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+    z-index: 10;
+}
+
+.servicio-card:hover .img-referencia {
+    transform: translateX(-50%) scale(1); 
+    opacity: 1; 
+    visibility: visible;
 }
 
 /* =========================================
@@ -211,21 +235,9 @@ nav a:hover {
     margin-bottom: 20px;
 }
 
-.lista-horarios {
-    list-style: none;
-}
-
-.lista-horarios li {
-    display: flex;
-    justify-content: space-between;
-    padding: 12px 0;
-    border-bottom: 1px solid var(--gris-borde);
-    color: var(--texto-suave);
-}
-
-.lista-horarios li strong {
-    color: var(--blanco-texto);
-}
+.lista-horarios { list-style: none; }
+.lista-horarios li { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--gris-borde); color: var(--texto-suave); }
+.lista-horarios li strong { color: var(--blanco-texto); }
 
 /* =========================================
    6. CONTACTO 
@@ -236,7 +248,7 @@ nav a:hover {
     margin: 0 auto;
 }
 
-#contacto h1, #contacto h2 {
+#contacto h2 {
     color: var(--verde-suave);
     font-size: 2rem;
     margin-bottom: 30px;
@@ -253,39 +265,10 @@ form {
     border: 1px solid var(--gris-borde);
 }
 
-form label {
-    color: var(--verde-suave);
-    font-weight: bold;
-    display: block;
-    margin-bottom: 5px;
-}
-
-form input, form select {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 20px;
-    background-color: var(--fondo-oscuro);
-    color: white;
-    border: 1px solid var(--gris-borde);
-    border-radius: 8px;
-}
-
-form button {
-    width: 100%;
-    background-color: var(--negro-minimal);
-    color: white;
-    padding: 15px;
-    border: 1px solid var(--verde-suave);
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-    text-transform: uppercase;
-    transition: 0.3s;
-}
-
-form button:hover {
-    background-color: var(--verde-suave);
-}
+form label { color: var(--verde-suave); font-weight: bold; display: block; margin-bottom: 5px; }
+form input, form select { width: 100%; padding: 12px; margin-bottom: 20px; background-color: var(--fondo-oscuro); color: white; border: 1px solid var(--gris-borde); border-radius: 8px; }
+form button { width: 100%; background-color: var(--negro-minimal); color: white; padding: 15px; border: 1px solid var(--verde-suave); border-radius: 8px; cursor: pointer; font-weight: bold; text-transform: uppercase; transition: 0.3s; }
+form button:hover { background-color: var(--verde-suave); }
 
 /* =========================================
    7. FOOTER Y BOTONES FLOTANTES
@@ -298,16 +281,8 @@ footer {
     border-top: 1px solid var(--gris-borde);
 }
 
-.redes-sociales a {
-    color: var(--blanco-texto);
-    margin: 0 10px;
-    text-decoration: none;
-    transition: 0.3s;
-}
-
-.redes-sociales a:hover {
-    color: var(--dorado-logo);
-}
+.redes-sociales a { color: var(--blanco-texto); margin: 0 10px; text-decoration: none; transition: 0.3s; }
+.redes-sociales a:hover { color: var(--dorado-logo); }
 
 .btn-whatsapp {
     position: fixed;
@@ -323,25 +298,13 @@ footer {
     transition: 0.3s;
 }
 
-.btn-whatsapp:hover {
-    transform: scale(1.05);
-}
+.btn-whatsapp:hover { transform: scale(1.05); }
 
 /* =========================================
    8. DISEÑO RESPONSIVO (Media Queries)
    ========================================= */
 @media (max-width: 768px) {
-    .contenedor-visita {
-        flex-direction: column;
-    }
-    
-    form {
-        margin-left: 0;
-        width: 100%;
-    }
-    
-    #contacto h1, #contacto h2 {
-        padding-left: 0;
-        text-align: center;
-    }
+    .contenedor-visita { flex-direction: column; }
+    form { margin-left: 0; width: 100%; }
+    #contacto h2 { padding-left: 0; text-align: center; }
 }
