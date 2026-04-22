@@ -107,6 +107,7 @@ nav a:hover {
     background-color: var(--dorado-logo);
 }
 
+
 /* =========================================
    3. SECCIÓN HERO (Inicio e Historia)
    ========================================= */
@@ -123,14 +124,7 @@ nav a:hover {
     margin-bottom: 15px;
 }
 
-form input:focus, 
-form select:focus {
-    outline: none; /* Quita el borde azul por defecto del navegador */
-    border-color: var(--dorado-logo);
-    box-shadow: 0 0 10px rgba(184, 150, 90, 0.3); /* Resplandor dorado */
-    background-color: #1a241f; /* Se aclara un poquito el fondo al escribir */
-    transition: all 0.3s ease;
-}
+
 
 /* =========================================
    4. SERVICIOS (Con efecto Hover de Imágenes)
