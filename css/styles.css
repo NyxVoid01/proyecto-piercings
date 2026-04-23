@@ -1,3 +1,4 @@
+
 /* =========================================
    1. VARIABLES Y RESET (Modo Oscuro)
    ========================================= */
@@ -335,7 +336,106 @@ footer { /* Pie */
    8. DISEÑO RESPONSIVO (Media Queries)
    ========================================= */
 @media (max-width: 768px) {    /* Quiebre */
+
+    /* Visítanos y Formulario */
     .contenedor-visita { flex-direction: column; }  /* Columna */
-    form { margin-left: 0; width: 100%; } /* Ancho */
+    form { margin-left: 0; width: 100%; }           /* Ancho */
     #contacto h2 { padding-left: 0; text-align: center; } /* Centro */
+
+    /* Comparativa */
+    .comparativa-dual {
+        flex-direction: column;   /* Apilado */
+        align-items: center;      /* Alineación */
+        gap: 20px;                /* Espaciado */
+    }
+
+    /* Historia y Certificados */
+    .historia-expandida {
+        text-align: left;         /* Lectura */
+    }
+    .parrafo-certificados {
+        text-align: left;         /* Adaptación */
+    }
 }
+
+/* Estilo historia y justificada */
+.historia-expandida {
+    max-width: 850px; /*ancho txt*/
+    margin: 0 auto;   /* Centra pnt*/
+    text-align: justify; /* Rellena I/D*/
+    line-height: 1.8;  /*aire entre líneas*/
+    color: var(--texto-suave); /* color texto*/
+}
+
+.historia-expandida p {
+    margin-bottom: 20px; /* Separa-párrafos */
+}
+
+/*columnas paralelo */
+.comparativa-dual {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 50px;
+    padding: 0 20px;
+}
+
+.columna-comparativa {
+    flex: 1;
+    max-width: 450px;
+    padding: 25px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.pros {
+    border-color: #d4af37; /* Color destacado */
+}
+
+
+/* --- SECCIÓN CERTIFICADOS --- */
+
+.certificados-container {
+    margin-top: 60px;
+    text-align: center;
+}
+
+.parrafo-certificados {
+    max-width: 850px;
+    margin: 20px auto 40px auto;
+    text-align: justify; /* estilo */
+    line-height: 1.8;
+    color: var(--texto-suave);
+}
+
+.galeria-certificados {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap; /* acomodan pantalla */
+}
+
+.certificado-item {
+    flex: 1;
+    min-width: 250px;
+    max-width: 300px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+/* Efecto sutil al pasar el mouse */
+.certificado-item:hover {
+    transform: scale(1.03);
+    border-color: #d4af37;
+}
+
+.certificado-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: grayscale(20%); /*oscuro/serio */
+}
+
