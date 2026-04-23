@@ -3,14 +3,14 @@
    1. VARIABLES Y RESET (Modo Oscuro)
    ========================================= */
 :root { /* Colores */
-    --fondo-oscuro: #0a0f0d;      
-    --fondo-card: #121a17;        
-    --verde-suave: #4a7c59;       
-    --dorado-logo: #b8965a;       
-    --blanco-texto: #e8e8e8;      
-    --gris-borde: #222a27;        
-    --texto-suave: #a0a0a0;       
-    --negro-minimal: #050505;     
+    --fondo-oscuro: #0a0f0d;      /*General*/
+    --fondo-card: #121a17;        /*Cajas*/
+    --verde-suave: #4a7c59;       /*Marca*/
+    --dorado-logo: #b8965a;       /*Detalles*/
+    --blanco-texto: #e8e8e8;      /*Lectura*/
+    --gris-borde: #222a27;        /*Bordes*/
+    --texto-suave: #a0a0a0;       /*Apoyo*/
+    --negro-minimal: #050505;     /*Contraste*/
 }
 
 * { /* Reseteo */
@@ -114,9 +114,17 @@ nav a:hover { /* Interacción */
     text-align: center;
 }
 
-#inicio h2, #historia h2 { /* Títulos */
-    font-size: 2.5rem;
+/* Solo para el Inicio  */
+#inicio h2 { 
+    font-size: 3.5rem;
     color: var(--verde-suave);
+    margin-bottom: 15px;
+}
+
+/* Solo para la Historia */
+#historia h2 { 
+    font-size: 2.5rem; /* Un poco más pequeño si quieres */
+    color: var(--verde-suave); 
     margin-bottom: 15px;
 }
 
