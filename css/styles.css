@@ -214,6 +214,51 @@ form select:focus { /* Resplandor */
     visibility: visible;
 }
 
+
+/* ==========================================================================
+   ESTILOS PREMIUM PARA LOS BOTONES DE FILTRO DE SERVICIOS
+   ========================================================================== */
+
+.filtros {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 30px 0 45px 0;
+    flex-wrap: wrap;
+    padding: 0 10px;
+}
+
+.filtros button {
+    background-color: #121a17; /* Fondo verde oscuro traslúcido */
+    color: #ffffff; /* Texto blanco impecable */
+    border: 2px solid #2d3f3a; /* Borde sutil a juego con el diseño */
+    padding: 14px 28px; /* Botones notablemente más amplios y grandes */
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.05rem; /* Letra clara y visible */
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 50px; /* Acabado en cápsula elegante */
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Efecto al pasar el mouse por encima */
+.filtros button:hover {
+    background-color: #baa05b; /* Se ilumina en un elegante tono dorado/bronce */
+    color: #05080c; /* El texto pasa a oscuro para máxima legibilidad */
+    border-color: #baa05b;
+    transform: translateY(-3px); /* Efecto flotante dinámico */
+    box-shadow: 0 8px 16px rgba(186, 160, 91, 0.25);
+}
+
+/* Efecto de clic pulsado */
+.filtros button:active {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(186, 160, 91, 0.15);
+}
+
 /* =========================================
    5. VISÍTANOS 
    ========================================= */
@@ -447,3 +492,93 @@ footer { /* Pie */
     filter: grayscale(20%); /*oscuro/serio */
 }
 
+/* --- SECCIÓN FAVORITOS --- */
+
+.btn-favorito {
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    filter: grayscale(100%); /* Corazón gris si no está seleccionado */
+    transition: transform 0.2s;
+}
+
+.btn-favorito.activo {
+    filter: grayscale(0%); /* Corazón rojo/normal si está seleccionado */
+    transform: scale(1.2);
+}
+
+
+
+/* --- SECCIÓN FAVORITOS inicio --- */
+
+
+.btn-favoritos-flotante {
+    position: fixed;
+    top: 20px;       /* Distancia desde arriba */
+    left: 20px;      /* Distancia desde la izquierda */
+    z-index: 1000;   /* Para que siempre esté encima de todo */
+    background-color: var(--verde-suave); /* O el color que prefieras */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease;
+}
+
+.btn-favoritos-flotante:hover {
+    transform: scale(1.1);
+    background-color: #d4af37; /* Un tono dorado o contraste */
+}
+
+/* Estilo para que el enlace de favoritos resalte en la barra */
+.nav-favoritos {
+    background-color: var(--verde-suave); /* O tu color de acento */
+    color: white !important;
+    padding: 8px 15px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: background-color 0.3s;
+}
+
+.nav-favoritos:hover {
+    background-color: #d4af37; /* Color dorado al pasar el mouse */
+}
+
+
+/* ==========================================================================
+   ESTILO PARA EL BOTÓN VOLVER (Y BOTONES SECUNDARIOS)
+   ========================================================================== */
+.btn-secundario {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #121a17; /* Fondo verde oscuro traslúcido */
+    color: #baa05b; /* Texto dorado premium, ¡ahora sí se va a ver! */
+    border: 2px solid #baa05b; /* Borde dorado nítido */
+    padding: 12px 28px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 50px; /* Bordes redondeados idénticos a los filtros */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* Efecto al pasar el mouse por encima */
+.btn-secundario:hover {
+    background-color: #baa05b; /* Se rellena de dorado */
+    color: #0a0f0d; /* El texto se vuelve oscuro para contrastar */
+    transform: translateY(-2px); /* Pequeño salto hacia arriba */
+    box-shadow: 0 6px 15px rgba(186, 160, 91, 0.3);
+}
+
+/* Ajuste por si se desborda en celulares */
+.btn-secundario:active {
+    transform: translateY(-1px);
+}
