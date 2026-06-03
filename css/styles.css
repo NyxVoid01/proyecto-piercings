@@ -287,6 +287,43 @@ form select:focus { /* Resplandor */
     transform: translateY(-1px);
 }
 
+/* --- SECCIÓN de Busqueda --- */
+
+.controles-servicios {
+    display: flex;
+    justify-content: space-between; /* Empuja filtros a la izq y buscador a la der */
+    align-items: center;
+    max-width: 1000px;
+    margin: 0 auto 30px auto;
+    padding: 0 20px;
+}
+
+#input-busqueda {
+    background: #121212; /* Fondo oscuro igual a tus tarjetas */
+    border: 1px solid #333; /* Borde sutil */
+    color: #e0e0e0;
+    padding: 10px 20px;
+    border-radius: 20px;
+    outline: none;
+    transition: border-color 0.3s;
+    width: 250px;
+}
+
+#input-busqueda:focus {
+    border-color: #888; /* Se aclara al hacer clic */
+}
+
+/* Ajuste para pantallas pequeñas */
+@media (max-width: 768px) {
+    .controles-servicios {
+        flex-direction: column;
+        gap: 20px;
+    }
+    #input-busqueda {
+        width: 100%;
+    }
+}
+
 /* =========================================
    5. VISÍTANOS 
    ========================================= */

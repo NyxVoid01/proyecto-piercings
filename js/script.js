@@ -1,6 +1,10 @@
 
 import { servicios } from './data.js';
 
+// --- ESTADO GLOBAL (Declarado una sola vez) ---
+let categoriaActual = 'todos';
+let terminoBusqueda = "";
+
 // --- 1. GESTOR DE FAVORITOS ---
 function toggleFavorito(id, botonElemento) {
     let favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
@@ -13,12 +17,12 @@ function toggleFavorito(id, botonElemento) {
     }
     localStorage.setItem('favoritos', JSON.stringify(favoritos));
     
-    // Refrescamos ambas secciones al instante para mantener todo sincronizado
-    renderizarServicios(servicios);
+    // Refrescamos la vista actual sin perder el filtro
+    aplicarFiltros(); 
     renderizarFavoritos();
 }
 
-// --- 2. RENDERIZADO CATÁLOGO COMPLETO ---
+// --- 2. RENDERIZADO CATÁLOGO (Usa la lógica de aplicarFiltros) ---
 function renderizarServicios(lista) {
     const contenedor = document.getElementById("contenedor-servicios-dinamico");
     if (!contenedor) return;
@@ -70,7 +74,6 @@ function renderizarFavoritos() {
         const btn = document.createElement("button");
         btn.className = "btn-favorito activo";
         btn.textContent = "❤️";
-        
         btn.onclick = () => toggleFavorito(item.id, btn);
 
         card.innerHTML = `
@@ -84,19 +87,38 @@ function renderizarFavoritos() {
     });
 }
 
-// --- 4. CONTROL DE NAVEGACIÓN Y FILTROS ---
+// --- FUNCIÓN CENTRALIZADA DE FILTROS (CON NORMALIZACIÓN) ---
+function aplicarFiltros() {
+    // Función auxiliar para quitar acentos
+    const normalizar = (texto) => {
+        return texto.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    };
+
+    const terminoNormalizado = normalizar(terminoBusqueda);
+
+    const filtrados = servicios.filter(s => {
+        const coincideCategoria = categoriaActual === 'todos' || s.categoria === categoriaActual;
+        const nombreNormalizado = normalizar(s.nombre);
+        const coincideTexto = nombreNormalizado.includes(terminoNormalizado);
+        
+        return coincideCategoria && coincideTexto;
+    });
+
+    renderizarServicios(filtrados);
+}
+
+// --- 5. CONTROL DE NAVEGACIÓN Y EVENTOS ---
 document.addEventListener("DOMContentLoaded", () => {
-    // Dibujamos ambas secciones inicialmente
+    // Renderizado inicial
     renderizarServicios(servicios);
     renderizarFavoritos();
 
-    // Capturamos los contenedores de secciones
+    // Navegación
     const btnFav = document.getElementById('btn-nav-favoritos');
     const btnVolver = document.getElementById('btn-volver-servicios');
     const secServicios = document.getElementById('servicios');
     const secFavoritos = document.getElementById('seccion-favoritos');
 
-    // Al hacer click en "❤️ Favoritos" en el menú superior
     if (btnFav && secServicios && secFavoritos) {
         btnFav.addEventListener('click', (e) => {
             e.preventDefault();
@@ -106,7 +128,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Al hacer click en "← Volver a Servicios"
     if (btnVolver && secServicios && secFavoritos) {
         btnVolver.addEventListener('click', () => {
             secFavoritos.style.display = 'none';
@@ -115,14 +136,30 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Filtros de categorías tradicionales
-    const btnTodos = document.getElementById('btn-todos');
-    const btnOreja = document.getElementById('btn-oreja');
-    const btnFacial = document.getElementById('btn-facial');
-    const btnAvanzado = document.getElementById('btn-avanzado');
+    // Búsqueda
+    const inputBusqueda = document.getElementById('input-busqueda');
+    if (inputBusqueda) {
+        inputBusqueda.addEventListener('input', (e) => {
+            terminoBusqueda = e.target.value;
+            aplicarFiltros();
+        });
+    }
 
-    if(btnTodos) btnTodos.addEventListener('click', () => renderizarServicios(servicios));
-    if(btnOreja) btnOreja.addEventListener('click', () => renderizarServicios(servicios.filter(s => s.categoria === 'oreja')));
-    if(btnFacial) btnFacial.addEventListener('click', () => renderizarServicios(servicios.filter(s => s.categoria === 'facial')));
-    if(btnAvanzado) btnAvanzado.addEventListener('click', () => renderizarServicios(servicios.filter(s => s.categoria === 'avanzado')));
+    // Filtros por Categoría
+    const botones = {
+        'btn-todos': 'todos',
+        'btn-oreja': 'oreja',
+        'btn-facial': 'facial',
+        'btn-avanzado': 'avanzado'
+    };
+
+    Object.entries(botones).forEach(([id, cat]) => {
+        const btn = document.getElementById(id);
+        if (btn) {
+            btn.addEventListener('click', () => {
+                categoriaActual = cat;
+                aplicarFiltros();
+            });
+        }
+    });
 });
