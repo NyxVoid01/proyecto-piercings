@@ -1,4 +1,3 @@
-
 import { servicios } from './data.js';
 
 // --- ESTADO GLOBAL (Declarado una sola vez) ---
@@ -113,11 +112,33 @@ document.addEventListener("DOMContentLoaded", () => {
     renderizarServicios(servicios);
     renderizarFavoritos();
 
-    // Navegación
+    // Elementos de navegación principal
     const btnFav = document.getElementById('btn-nav-favoritos');
     const btnVolver = document.getElementById('btn-volver-servicios');
     const secServicios = document.getElementById('servicios');
     const secFavoritos = document.getElementById('seccion-favoritos');
+
+    // --- LOGICA AGREGADA: MENÚ HAMBURGUESA ---
+    const menuBtn = document.querySelector('.menu-hamburguesa');
+    const navMenu = document.querySelector('header nav');
+
+    if (menuBtn && navMenu) {
+        // Al hacer clic en el botón abre/cierra el menú y anima las líneas
+        menuBtn.addEventListener('click', () => {
+            menuBtn.classList.toggle('abierto');
+            navMenu.classList.toggle('activo');
+        });
+
+        // Cierra el menú automáticamente cuando el usuario hace clic en CUALQUIER enlace
+        const enlacesMenu = navMenu.querySelectorAll('a');
+        enlacesMenu.forEach(enlace => {
+            enlace.addEventListener('click', () => {
+                menuBtn.classList.remove('abierto');
+                navMenu.classList.remove('activo');
+            });
+        });
+    }
+    // ----------------------------------------
 
     if (btnFav && secServicios && secFavoritos) {
         btnFav.addEventListener('click', (e) => {
