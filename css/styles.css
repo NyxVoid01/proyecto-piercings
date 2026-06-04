@@ -597,4 +597,78 @@ footer { /* Pie */
     .parrafo-certificados {
         text-align: left;         /* Adaptación */
     }
+   /* ==========================================================================
+   9. MENÚ HAMBURGUESA Y RESPONSIVO (CORREGIDO DE RAÍZ)
+   ========================================================================== */
+
+/* 9.A) Estilos del botón: Por defecto en computadoras NO se ve */
+.menu-hamburguesa {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 32px;
+    height: 22px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    margin: 15px auto 0 auto; /* Lo centra debajo del título del encabezado */
+    padding: 0;
+    z-index: 1010;
+}
+
+/* Las 3 líneas del botón hamburguesa */
+.menu-hamburguesa span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: var(--blanco-texto) !important;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+/* Animaciones de la transformación a "X" mediante JS */
+.menu-hamburguesa.abierto span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+.menu-hamburguesa.abierto span:nth-child(2) {
+    opacity: 0;
+}
+.menu-hamburguesa.abierto span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+/* 9.B) REGLA EXCLUSIVA PARA ESCRITORIO (Pantallas grandes) */
+@media (min-width: 769px) {
+    header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    nav ul {
+        display: flex !important; /* Asegura que los enlaces se vean horizontales en PC */
+    }
+}
+
+/* 9.C) REGLA EXCLUSIVA PARA CELULARES (Menos de 768px) */
+@media (max-width: 768px) {
+    .menu-hamburguesa {
+        display: flex !important; /* Forzamos a que aparezca el botón en celulares */
+    }
+
+    /* OCULTA ÚNICAMENTE la lista del menú de navegación, dejando libres los filtros */
+    header nav ul {
+        display: none !important; 
+        flex-direction: column !important; 
+        gap: 15px;
+        margin-top: 20px;
+        padding: 15px 0;
+        text-align: center;
+        width: 100%;
+    }
+
+    /* Muestra la lista de navegación de forma vertical cuando se presiona la hamburguesa */
+    header nav.activo ul {
+        display: flex !important; 
+    }
+}
 }
