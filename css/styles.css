@@ -1,8 +1,9 @@
+/* ==========================================================================
+   1. VARIABLES Y RESET (Temas Dinámicos)
+   ========================================================================== */
 
-/* =========================================
-   1. VARIABLES Y RESET (Modo Oscuro)
-   ========================================= */
-:root { /* Colores */
+/* --- 1.A) MODO OSCURO (Por Defecto) --- */
+:root, [data-theme="dark"] {
     --fondo-oscuro: #0a0f0d;      /*General*/
     --fondo-card: #121a17;        /*Cajas*/
     --verde-suave: #4a7c59;       /*Marca*/
@@ -11,47 +12,83 @@
     --gris-borde: #222a27;        /*Bordes*/
     --texto-suave: #a0a0a0;       /*Apoyo*/
     --negro-minimal: #050505;     /*Contraste*/
+    --header-rgba: rgba(10, 15, 13, 0.85); /* Fondo menú */
+    --overlay-hero: rgba(10, 15, 13, 0.8); /* Capa sobre imágenes */
 }
 
-* { /* Reseteo */
+/* --- 1.B) MODO CLARO --- */
+[data-theme="light"] {
+    --fondo-oscuro: #f4f6f5;      
+    --fondo-card: #ffffff;        
+    --verde-suave: #2d5a3c;       
+    --dorado-logo: #96753c;       
+    --blanco-texto: #1a2420;      
+    --gris-borde: #dbebd5;        
+    --texto-suave: #55625c;       
+    --negro-minimal: #ffffff;     
+    --header-rgba: rgba(244, 246, 245, 0.85);
+    --overlay-hero: rgba(244, 246, 245, 0.4); 
+}
+
+/* --- 1.C) MODO ALTO CONTRASTE --- */
+[data-theme="contrast"] {
+    --fondo-oscuro: #000000;      
+    --fondo-card: #000000;        
+    --verde-suave: #ffff00;       
+    --dorado-logo: #ffff00;       
+    --blanco-texto: #ffffff;      
+    --gris-borde: #ffffff;        
+    --texto-suave: #ffff00;       
+    --negro-minimal: #000000;     
+    --header-rgba: rgba(0, 0, 0, 0.95);
+    --overlay-hero: rgba(0, 0, 0, 0.9);
+}
+
+* { 
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-img { /* Adaptabilidad */
+body {
+    background-color: var(--fondo-oscuro);
+    color: var(--blanco-texto) !important; 
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px; 
+    line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+img { 
     max-width: 100%;
     height: auto;
 }
 
-html { /* Desplazamiento */
+html { 
     scroll-behavior: smooth;
 }
 
-body { /* Base */
-    background-color: var(--fondo-oscuro);
-    color: var(--blanco-texto);
-    font-family: 'Montserrat', sans-serif;
-    font-size: 16px; 
-    line-height: 1.6;
-}
-
-/* =========================================
-   2. ENCABEZADO
-   ========================================= */
-header { /* Menú */
-    padding: 25px 0;
+/* ==========================================================================
+   2. ENCABEZADO BASE & ESCRITORIO
+   ========================================================================== */
+header { 
+    padding: 25px 20px;
     text-align: center; 
     border-bottom: 4px solid var(--verde-suave); 
-    position: sticky; /* Fijo */
+    position: sticky; 
     top: 0;
     z-index: 1000;
-    background-color: rgba(10, 15, 13, 0.85); 
-    backdrop-filter: blur(10px); /* Esmerilado */
+    background-color: var(--header-rgba);
+    backdrop-filter: blur(10px); 
     -webkit-backdrop-filter: blur(10px);
+    transition: background-color 0.3s ease;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.logo-img { /* Imagen */
+.logo-img { 
     width: 130px;
     border-radius: 50%;
     border: 2px solid var(--dorado-logo);
@@ -59,69 +96,64 @@ header { /* Menú */
     margin-bottom: 10px;
 }
 
-header h1 { /* Marca */
+header h1 { 
     color: var(--blanco-texto);
     font-size: 1.6rem;
     text-transform: uppercase;
     letter-spacing: 2px;
 }
 
-nav ul { /* Lista */
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    margin-top: 15px;
+/* Solo se aplica en pantallas grandes para no romper celulares */
+@media (min-width: 769px) {
+    nav ul { 
+        list-style: none;
+        display: flex !important;
+        justify-content: center;
+        gap: 30px;
+        margin-top: 15px;
+    }
 }
 
-nav a { /* Enlaces */
-    color: var(--texto-suave);
+nav a { 
+    color: var(--texto-suave) !important;
     text-decoration: none;
     font-weight: bold;
     font-size: 0.8rem;
     transition: 0.3s;
 }
 
-nav a:hover { /* Interacción */
-    color: var(--verde-suave);
+nav a:hover { 
+    color: var(--verde-suave) !important;
 }
 
-::-webkit-scrollbar { /* Barra */
-    width: 12px;
-}
-
-::-webkit-scrollbar-track { /* Fondo-barra */
-    background-color: var(--fondo-oscuro);
-}
-
-::-webkit-scrollbar-thumb { /* Deslizador */
+/* --- Scrollbar --- */
+::-webkit-scrollbar { width: 12px; }
+::-webkit-scrollbar-track { background-color: var(--fondo-oscuro); }
+::-webkit-scrollbar-thumb { 
     background-color: var(--verde-suave);
     border-radius: 10px;
     border: 3px solid var(--fondo-oscuro);
 }
+::-webkit-scrollbar-thumb:hover { background-color: var(--dorado-logo); }
 
-::-webkit-scrollbar-thumb:hover { /* Activado */
-    background-color: var(--dorado-logo);
-}
-
-/* =========================================
+/* ==========================================================================
    3. SECCIÓN HERO (Inicio e Historia)
-   ========================================= */
-#inicio, #historia { /* Portada */
-    background-image: linear-gradient(rgba(10,15,13,0.8), rgba(10,15,13,0.9)), url('../image_def523.png');
+   ========================================================================== */
+#inicio, #historia { 
+    background-image: linear-gradient(var(--overlay-hero), var(--overlay-hero)), url('../image_def523.png');
     background-size: cover;
+    background-position: center;
     padding: 100px 20px;
     text-align: center;
+    transition: background-image 0.3s ease;
 }
 
-/* Solo para el Inicio  */
 #inicio h2 { 
     font-size: 3.5rem;
     color: var(--verde-suave);
     margin-bottom: 15px;
 }
 
-/* Solo para la Historia */
 #historia h2 { 
     font-size: 2.5rem; 
     color: var(--verde-suave); 
@@ -129,30 +161,30 @@ nav a:hover { /* Interacción */
 }
 
 form input:focus, 
-form select:focus { /* Resplandor */
+form select:focus {
     outline: none; 
     border-color: var(--dorado-logo);
     box-shadow: 0 0 10px rgba(184, 150, 90, 0.3); 
-    background-color: #1a241f; 
+    background-color: var(--fondo-oscuro); 
     transition: all 0.3s ease;
 }
 
-/* =========================================
-   4. SERVICIOS (Con efecto Hover de Imágenes)
-   ========================================= */
-#servicios { /* Contenedor */
+/* ==========================================================================
+   4. SERVICIOS Y FILTROS PREMIUM
+   ========================================================================== */
+#servicios { 
     background-color: var(--fondo-oscuro); 
     padding: 60px 20px;
 }
 
-#servicios h2, #servicios h3 { /* Subtítulos */
+#servicios h2, #servicios h3 { 
     color: var(--verde-suave);
     text-align: center;
     margin-bottom: 20px;
     text-transform: uppercase;
 }
 
-.contenedor-servicios { /* Cuadrícula */
+.contenedor-servicios { 
     display: flex;
     justify-content: center;
     gap: 25px;
@@ -160,7 +192,7 @@ form select:focus { /* Resplandor */
     margin-bottom: 50px;
 }
 
-.servicio-card { /* Tarjeta */
+.servicio-card { 
     background-color: var(--fondo-card);
     border: 1px solid var(--gris-borde);
     border-radius: 15px;
@@ -168,21 +200,21 @@ form select:focus { /* Resplandor */
     width: 280px;
     text-align: center;
     transition: 0.3s ease;
-    position: relative; /* Base-flotante */
+    position: relative; 
 }
 
-.servicio-card:hover { /* Elevación */
+.servicio-card:hover { 
     transform: translateY(-8px);
     border-color: var(--dorado-logo);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
 }
 
-.servicio-card h3 { /* Nombre */
+.servicio-card h3 { 
     color: var(--blanco-texto);
     margin-bottom: 10px;
 }
 
-.servicio-card .precio { /* Valor */
+.servicio-card .precio { 
     color: var(--dorado-logo);
     font-weight: bold;
     font-size: 1.4rem;
@@ -190,117 +222,78 @@ form select:focus { /* Resplandor */
     margin-top: 15px;
 }
 
-.img-referencia { /* Oculta */
+.img-referencia { 
     position: absolute;
-    top: -100px; /* Subida */
+    top: -100px; 
     left: 50%;
     transform: translateX(-50%) scale(0.5); 
-    width: 130px; /* Tamaño */
+    width: 130px; 
     height: 130px;
     object-fit: cover; 
     border-radius: 50%; 
     border: 3px solid var(--dorado-logo); 
-    box-shadow: 0 10px 25px rgba(0,0,0,0.8); /* Sombra */
-    opacity: 0; /* Transparente */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.8); 
+    opacity: 0; 
     visibility: hidden;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
     z-index: 10;
     background-color: var(--fondo-oscuro); 
 }
 
-.servicio-card:hover .img-referencia { /* Visible */
+.servicio-card:hover .img-referencia { 
     transform: translateX(-50%) scale(1); 
     opacity: 1; 
     visibility: visible;
 }
 
-/* ==========================================================================
-   ESTILOS PREMIUM PARA LOS BOTONES DE FILTRO DE SERVICIOS
-   ========================================================================== */
-.filtros {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin: 30px 0 45px 0;
-    flex-wrap: wrap;
-    padding: 0 10px;
-}
-
-.filtros button {
-    background-color: #121a17; /* Fondo verde oscuro traslúcido */
-    color: #ffffff; /* Texto blanco impecable */
-    border: 2px solid #2d3f3a; /* Borde sutil a juego con el diseño */
-    padding: 14px 28px; /* Botones notablemente más amplios y grandes */
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.05rem; /* Letra clara y visible */
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border-radius: 50px; /* Acabado en cápsula elegante */
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-}
-
-.filtros button:hover {
-    background-color: #baa05b; /* Se ilumina en un elegante tono dorado/bronce */
-    color: #05080c; /* El texto pasa a oscuro para máxima legibilidad */
-    border-color: #baa05b;
-    transform: translateY(-3px); /* Efecto flotante dinámico */
-    box-shadow: 0 8px 16px rgba(186, 160, 91, 0.25);
-}
-
-.filtros button:active {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 8px rgba(186, 160, 91, 0.15);
-}
-
-/* ==========================================================================
-   ESTILO PARA EL BOTÓN VOLVER (Y BOTONES SECUNDARIOS)
-   ========================================================================== */
-.btn-secundario {
-    display: inline-block;
-    text-decoration: none;
-    background-color: #121a17; 
-    color: #baa05b; 
-    border: 2px solid #baa05b; 
-    padding: 12px 28px;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.95rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border-radius: 50px; 
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-}
-
-.btn-secundario:hover {
-    background-color: #baa05b; 
-    color: #0a0f0d; 
-    transform: translateY(-2px); 
-    box-shadow: 0 6px 15px rgba(186, 160, 91, 0.3);
-}
-
-.btn-secundario:active {
-    transform: translateY(-1px);
-}
-
-/* --- SECCIÓN de Busqueda --- */
-
+/* --- Controles de Búsqueda y Botones Filtro --- */
 .controles-servicios {
     display: flex;
-    justify-content: space-between; /* Empuja filtros a la izq y buscador a la der */
+    justify-content: space-between; 
     align-items: center;
     max-width: 1000px;
     margin: 0 auto 30px auto;
     padding: 0 20px;
 }
 
+.filtros {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.filtros button {
+    background-color: #121a17;  
+    color: #ffffff;          
+    border: 2px solid #2d3f3a;   
+    padding: 14px 28px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.05rem; 
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 50px; 
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.filtros button:hover {
+    background-color: #baa05b; 
+    color: #05080c; 
+    border-color: #baa05b;
+    transform: translateY(-3px); 
+    box-shadow: 0 8px 16px rgba(186, 160, 91, 0.25);
+}
+
+.filtros button:active {
+    transform: translateY(-1px);
+}
+
 #input-busqueda {
-    background: #121212; /* Fondo oscuro igual a tus tarjetas */
-    border: 1px solid #333; /* Borde sutil */
+    background: #121212; 
+    border: 1px solid #333; 
     color: #e0e0e0;
     padding: 10px 20px;
     border-radius: 20px;
@@ -309,30 +302,17 @@ form select:focus { /* Resplandor */
     width: 250px;
 }
 
-#input-busqueda:focus {
-    border-color: #888; /* Se aclara al hacer clic */
-}
+#input-busqueda:focus { border-color: #baa05b; }
 
-/* Ajuste para pantallas pequeñas */
-@media (max-width: 768px) {
-    .controles-servicios {
-        flex-direction: column;
-        gap: 20px;
-    }
-    #input-busqueda {
-        width: 100%;
-    }
-}
-
-/* =========================================
+/* ==========================================================================
    5. VISÍTANOS 
-   ========================================= */
-#visitanos { /* Sección */
+   ========================================================================== */
+#visitanos { 
     padding: 80px 20px;
-    background-color: var(--fondo-oscuro);
+    background-color: var(--fondo-oscuro); 
 }
 
-.contenedor-visita { /* Maquetación */
+.contenedor-visita { 
     display: flex;
     flex-wrap: wrap;
     max-width: 1000px;
@@ -342,21 +322,21 @@ form select:focus { /* Resplandor */
     padding: 0 15px;
 }
 
-.columna-info h2 { /* Título */
+.columna-info h2 { 
     color: var(--verde-suave);
     margin-bottom: 20px;
     font-size: 2rem;
     text-align: left;
 }
 
-.detalle-contacto { /* Detalles */
+.detalle-contacto { 
     margin: 20px 0;
     border-left: 3px solid var(--dorado-logo);
     padding-left: 15px;
     text-align: left;
 }
 
-.columna-horarios { /* Caja */
+.columna-horarios { 
     background-color: var(--fondo-card);
     padding: 40px;
     border-radius: 20px;
@@ -364,26 +344,26 @@ form select:focus { /* Resplandor */
     flex: 1;
 }
 
-.columna-horarios h3 { /* Título */
+.columna-horarios h3 { 
     color: var(--blanco-texto);
     text-align: center;
     margin-bottom: 20px;
 }
 
-.lista-horarios { list-style: none; /* Días */ }
+.lista-horarios { list-style: none; }
 .lista-horarios li { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--gris-borde); color: var(--texto-suave); }
-.lista-horarios li strong { color: var(--blanco-texto); /* Cierre */ }
+.lista-horarios li strong { color: var(--blanco-texto); }
 
-/* =========================================
+/* ==========================================================================
    6. CONTACTO 
-   ========================================= */
-#contacto { /* Bloque */
+   ========================================================================== */
+#contacto { 
     padding: 80px 20px;
     max-width: 1000px;
     margin: 0 auto;
 }
 
-#contacto h2 { /* Título */
+#contacto h2 { 
     color: var(--verde-suave);
     font-size: 2rem;
     margin-bottom: 30px;
@@ -391,7 +371,7 @@ form select:focus { /* Resplandor */
     padding-left: 15px;
 }
 
-form { /* Formulario */
+form { 
     background-color: var(--fondo-card);
     padding: 40px;
     max-width: 600px;
@@ -400,15 +380,35 @@ form { /* Formulario */
     border: 1px solid var(--gris-borde);
 }
 
-form label { color: var(--verde-suave); font-weight: bold; display: block; margin-bottom: 5px; /* Etiquetas */ }
-form input, form select { width: 100%; padding: 12px; margin-bottom: 20px; background-color: var(--fondo-oscuro); color: white; border: 1px solid var(--gris-borde); border-radius: 8px; /* Cajas */ }
-form button { width: 100%; background-color: var(--negro-minimal); color: white; padding: 15px; border: 1px solid var(--verde-suave); border-radius: 8px; cursor: pointer; font-weight: bold; text-transform: uppercase; transition: 0.3s; /* Enviar */ }
-form button:hover { background-color: var(--verde-suave); /* Clic */ }
+form label { color: var(--verde-suave); font-weight: bold; display: block; margin-bottom: 5px; }
+form input, form select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    background-color: var(--fondo-oscuro);
+    color: white;
+    border: 1px solid var(--gris-borde);
+    border-radius: 8px;
+}
 
-/* =========================================
-   7. FOOTER Y BOTONES FLOTANTES
-   ========================================= */
-footer { /* Pie */
+form button { 
+    width: 100%; 
+    background-color: var(--negro-minimal); 
+    color: white;          
+    padding: 15px; 
+    border: 1px solid var(--verde-suave); 
+    border-radius: 8px; 
+    cursor: pointer; 
+    font-weight: bold; 
+    text-transform: uppercase; 
+    transition: 0.3s; 
+}
+form button:hover { background-color: var(--verde-suave); }
+
+/* ==========================================================================
+   7. FOOTER Y COMPONENTES ADICIONALES
+   ========================================================================== */
+footer { 
     background-color: var(--negro-minimal);
     color: var(--texto-suave);
     padding: 40px 20px;
@@ -416,10 +416,10 @@ footer { /* Pie */
     border-top: 1px solid var(--gris-borde);
 }
 
-.redes-sociales a { color: var(--blanco-texto); margin: 0 10px; text-decoration: none; transition: 0.3s; /* Íconos */ }
-.redes-sociales a:hover { color: var(--dorado-logo); /* Brillo */ }
+.redes-sociales a { color: var(--blanco-texto); margin: 0 10px; text-decoration: none; transition: 0.3s; }
+.redes-sociales a:hover { color: var(--dorado-logo); }
 
-.btn-whatsapp { /* Chat */
+.btn-whatsapp { 
     position: fixed;
     bottom: 20px;
     right: 20px;
@@ -432,30 +432,49 @@ footer { /* Pie */
     z-index: 1000;
     transition: 0.3s;
 }
+.btn-whatsapp:hover { transform: scale(1.05); }
 
-.btn-whatsapp:hover { transform: scale(1.05); /* Latido */ }
+/* --- Botones Secundarios --- */
+.btn-secundario {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #121a17;  
+    color: #baa05b;  
+    border: 2px solid #baa05b;  
+    padding: 12px 28px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 50px;  
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+.btn-secundario:hover {
+    background-color: #baa05b;  
+    color: #0a0f0d;  
+    transform: translateY(-2px);  
+    box-shadow: 0 6px 15px rgba(186, 160, 91, 0.3);
+}
 
-
-/* --- SECCIÓN FAVORITOS (Botones y Navbar) --- */
+/* --- Favoritos --- */
 .btn-favorito {
     cursor: pointer;
     background: none;
     border: none;
     font-size: 1.2rem;
-    filter: grayscale(100%); /* Corazón gris si no está seleccionado */
+    filter: grayscale(100%); 
     transition: transform 0.2s;
 }
-
-.btn-favorito.activo {
-    filter: grayscale(0%); /* Corazón rojo/normal si está seleccionado */
-    transform: scale(1.2);
-}
+.btn-favorito.activo { filter: grayscale(0%); transform: scale(1.2); }
 
 .btn-favoritos-flotante {
     position: fixed;
-    top: 20px;       /* Distancia desde arriba */
-    left: 20px;      /* Distancia desde la izquierda */
-    z-index: 1000;   /* Para que siempre esté encima de todo */
+    top: 20px;       
+    left: 20px;      
+    z-index: 1000;   
     background-color: var(--verde-suave); 
     color: white;
     padding: 10px 20px;
@@ -465,13 +484,8 @@ footer { /* Pie */
     box-shadow: 0 4px 6px rgba(0,0,0,0.3);
     transition: transform 0.3s ease;
 }
+.btn-favoritos-flotante:hover { transform: scale(1.1); background-color: #d4af37; }
 
-.btn-favoritos-flotante:hover {
-    transform: scale(1.1);
-    background-color: #d4af37; /* Un tono dorado o contraste */
-}
-
-/* Estilo para que el enlace de favoritos resalte en la barra */
 .nav-favoritos {
     background-color: var(--verde-suave); 
     color: white !important;
@@ -481,129 +495,47 @@ footer { /* Pie */
     font-size: 0.9rem;
     transition: background-color 0.3s;
 }
+.nav-favoritos:hover { background-color: #d4af37; }
 
-.nav-favoritos:hover {
-    background-color: #d4af37; /* Color dorado al pasar el mouse */
+/* --- Panel Temas --- */
+#panel-temas {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background: var(--fondo-card);
+  padding: 10px;
+  border-radius: 50px;
+  display: flex;
+  gap: 10px;
+  z-index: 10000; 
+  border: 2px solid var(--gris-borde);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
+#panel-temas button { background: none; border: none; font-size: 1.3rem; cursor: pointer; transition: transform 0.2s; padding: 5px; }
+#panel-temas button:hover { transform: scale(1.2); }
 
+/* --- Bloques Expandidos --- */
+.historia-expandida { max-width: 850px; margin: 0 auto; text-align: justify; line-height: 1.8; color: var(--texto-suave); }
+.historia-expandida p { margin-bottom: 20px; }
+.comparativa-dual { display: flex; justify-content: center; gap: 30px; margin-top: 50px; padding: 0 20px; }
+.columna-comparativa { flex: 1; max-width: 450px; padding: 25px; border-radius: 10px; background-color: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); }
+.pros { border-color: #d4af37; }
 
-/* --- HISTORIA EXPANDIDA Y COMPARATIVA --- */
-.historia-expandida {
-    max-width: 850px; /* Ancho texto */
-    margin: 0 auto;   /* Centra bloque */
-    text-align: justify; /* Rellena */
-    line-height: 1.8;  /* Aire entre líneas */
-    color: var(--texto-suave); /* Color */
-}
+/* --- Certificados --- */
+.certificados-container { margin-top: 60px; text-align: center; }
+.parrafo-certificados { max-width: 850px; margin: 20px auto 40px auto; text-align: justify; line-height: 1.8; color: var(--texto-suave); }
+.galeria-certificados { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+.certificado-item { flex: 1; min-width: 250px; max-width: 300px; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 5px; overflow: hidden; transition: transform 0.3s ease; }
+.certificado-item:hover { transform: scale(1.03); border-color: #d4af37; }
+.certificado-item img { width: 100%; height: auto; display: block; filter: grayscale(20%); }
 
-.historia-expandida p {
-    margin-bottom: 20px; /* Separa-párrafos */
-}
-
-.comparativa-dual {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    margin-top: 50px;
-    padding: 0 20px;
-}
-
-.columna-comparativa {
-    flex: 1;
-    max-width: 450px;
-    padding: 25px;
-    border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.pros {
-    border-color: #d4af37; /* Color destacado */
-}
-
-
-/* --- SECCIÓN CERTIFICADOS --- */
-.certificados-container {
-    margin-top: 60px;
-    text-align: center;
-}
-
-.parrafo-certificados {
-    max-width: 850px;
-    margin: 20px auto 40px auto;
-    text-align: justify; /* Estilo de llenado */
-    line-height: 1.8;
-    color: var(--texto-suave);
-}
-
-.galeria-certificados {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap; /* Acomoda en pantalla */
-}
-
-.certificado-item {
-    flex: 1;
-    min-width: 250px;
-    max-width: 300px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 5px;
-    overflow: hidden;
-    transition: transform 0.3s ease;
-}
-
-.certificado-item:hover {
-    transform: scale(1.03);
-    border-color: #d4af37;
-}
-
-.certificado-item img {
-    width: 100%;
-    height: auto;
-    display: block;
-    filter: grayscale(20%); /* Oscuro/serio */
-}
-
-/* =========================================
-   8. DISEÑO RESPONSIVO (Media Queries)
-   ========================================= */
-@media (max-width: 768px) {   /* Quiebre para tablets y celulares */
-
-    /* 1. Ajustes de Visítanos y Formulario */
-    .contenedor-visita { 
-        flex-direction: column; 
-    }
-    form { 
-        margin-left: 0; 
-        width: 100%; 
-    }
-    #contacto h2 { 
-        padding-left: 0; 
-        text-align: center; 
-    }
-
-    /* 2. Ajustes de Comparativa */
-    .comparativa-dual {
-        flex-direction: column;   /* Apilado */
-        align-items: center;      /* Alineación */
-        gap: 20px;                /* Espaciado */
-    }
-
-    /* 3. Ajustes de Historia y Certificados */
-    .historia-expandida {
-        text-align: left;         /* Lectura más fácil en móvil */
-    }
-    .parrafo-certificados {
-        text-align: left;         /* Adaptación */
-    }
-   /* ==========================================================================
-   9. MENÚ HAMBURGUESA Y RESPONSIVO (CORREGIDO DE RAÍZ)
+/* ==========================================================================
+   8. DISEÑO RESPONSIVO (Media Queries Integradas)
    ========================================================================== */
 
-/* 9.A) Estilos del botón: Por defecto en computadoras NO se ve */
+/* --- Estilos Generales del Botón Hamburguesa --- */
 .menu-hamburguesa {
-    display: none;
+    display: none; /* Por defecto oculto en Computadora */
     flex-direction: column;
     justify-content: space-between;
     width: 32px;
@@ -611,12 +543,11 @@ footer { /* Pie */
     background: transparent;
     border: none;
     cursor: pointer;
-    margin: 15px auto 0 auto; /* Lo centra debajo del título del encabezado */
+    margin: 15px auto 0 auto;
     padding: 0;
     z-index: 1010;
 }
 
-/* Las 3 líneas del botón hamburguesa */
 .menu-hamburguesa span {
     display: block;
     width: 100%;
@@ -626,36 +557,20 @@ footer { /* Pie */
     transition: all 0.3s ease;
 }
 
-/* Animaciones de la transformación a "X" mediante JS */
-.menu-hamburguesa.abierto span:nth-child(1) {
-    transform: translateY(9px) rotate(45deg);
-}
-.menu-hamburguesa.abierto span:nth-child(2) {
-    opacity: 0;
-}
-.menu-hamburguesa.abierto span:nth-child(3) {
-    transform: translateY(-9px) rotate(-45deg);
-}
+/* Animaciones del botón (Activadas mediante JS) */
+.menu-hamburguesa.abierto span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+.menu-hamburguesa.abierto span:nth-child(2) { opacity: 0; }
+.menu-hamburguesa.abierto span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
 
-/* 9.B) REGLA EXCLUSIVA PARA ESCRITORIO (Pantallas grandes) */
-@media (min-width: 769px) {
-    header {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    nav ul {
-        display: flex !important; /* Asegura que los enlaces se vean horizontales en PC */
-    }
-}
-
-/* 9.C) REGLA EXCLUSIVA PARA CELULARES (Menos de 768px) */
-@media (max-width: 768px) {
+/* --- Reglas exclusivas para tablets y celulares (Menos de 768px) --- */
+@media (max-width: 768px) { 
+    
+    /* Mostrar Hamburguesa */
     .menu-hamburguesa {
-        display: flex !important; /* Forzamos a que aparezca el botón en celulares */
+        display: flex !important;
     }
 
-    /* OCULTA ÚNICAMENTE la lista del menú de navegación, dejando libres los filtros */
+    /* Ocultar EXCLUSIVAMENTE la lista de navegación superior */
     header nav ul {
         display: none !important; 
         flex-direction: column !important; 
@@ -666,9 +581,24 @@ footer { /* Pie */
         width: 100%;
     }
 
-    /* Muestra la lista de navegación de forma vertical cuando se presiona la hamburguesa */
+    /* Mostrar menú vertical al hacer clic */
     header nav.activo ul {
         display: flex !important; 
     }
-}
+
+    /* Adaptación del Buscador y Controles de Filtros */
+    .controles-servicios {
+        flex-direction: column;
+        gap: 20px;
+    }
+    #input-busqueda {
+        width: 100%;
+    }
+
+    /* Ajustes estructurales de secciones */
+    .contenedor-visita { flex-direction: column; }
+    form { margin-left: 0; width: 100%; }
+    #contacto h2 { padding-left: 0; text-align: center; }
+    .comparativa-dual { flex-direction: column; align-items: center; gap: 20px; }
+    .historia-expandida, .parrafo-certificados { text-align: left; }
 }
